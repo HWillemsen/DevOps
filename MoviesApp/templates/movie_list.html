@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Movie list{% endblock %}
+
+<body>
+    {% block content %}
+        <div class="container">
+            <h1>All Movies</h1>
+            <br><br>
+            <img src="/static/movie-board.jpg" class="img-rounded" alt="Director's board" width="304" height="236">
+        </div>
+
+        <div class="container">
+            <br><br>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Year</th>
+                        <th>Director</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for movie in alldata %}
+                        <tr>
+                            <td><a href="/movie/{{ movie.id }}">{{ movie.title }}</a></td>
+                            <td>{{ movie.year }}</td>
+                            <td>{{ movie.director }}</td>
+                            <td>{{ movie.imdbRating }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    {% endblock %}
+</body>

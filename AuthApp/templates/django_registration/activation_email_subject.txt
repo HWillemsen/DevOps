@@ -1,0 +1,1 @@
+Activate your Movie Critics account! You have {{ expiration_days }} days!

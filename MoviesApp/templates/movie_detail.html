@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Movie details{% endblock %}
+<body>
+    {% block content %}
+
+        <h1>{{ object.title }}</h1><br><br><br>
+        <div class="row">
+            <div class="col-sm-6">
+
+                <img src="/Media/{{ object.moviePic }}" alt="Movie poster" class="img-fluid">
+
+                {% if request.user.is_active %}
+                    <h3>Add Critic</h3>
+                        {% csrf_token %}
+                        {% crispy critic_form %}
+                {% endif %}
+
+            </div>
+
+            <div class="col-sm-6">
+
+                <h3>Summary</h3>
+
+                <table class="table table-striped">
+                    <tr>
+                        <td>ImdbID</td><td>{{ object.imdbID }}</td>
+                    </tr>
+                    <tr>
+                        <td>Title</td><td>{{ object.title }}</td>
+                    </tr>
+                    <tr>
+                        <td>Year</td><td>{{ object.year }}</td>
+                    </tr>
+                    <tr>
+                        <td>Director</td><td>{{ object.director }}</td>
+                    </tr>
+                    <tr>
+                        <td>Plot</td><td>{{ object.plot }}</td>
+                    </tr>
+                    <tr>
+                        <td>ImdbRating</td><td>{{ object.imdbRating }}</td>
+                    </tr>
+                    <tr>
+                        <td>More info</td><td><a href = "https://www.imdb.com/title/{{ object.imdbID }}/" target = "_blank"><img src="/static/IMDb_logo.jpeg" class="img-rounded" alt="IMDb logo" width="50" height="35"></a></td>
+                    </tr>
+                </table>
+
+                <h3>Critics</h3>
+
+                <table class="table">
+                    {% for critic in critic_list %}
+                        <tr>
+                            <td>Posted by {{ critic.author.last_name }} at {{ critic.created_at }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ critic.criticText }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td>No critics yet.</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+
+        </div>
+
+    {% endblock %}
+</body>

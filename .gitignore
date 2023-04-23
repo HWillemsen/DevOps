@@ -1,0 +1,16 @@
+# ingore seperate files
+settings.py
+db.sqlite3
+manage.py
+
+# ignore all init and compiled files
+*.pyc
+__init__.py
+
+# ignore all picturs
+*.jpeg
+*.jpg
+*.ico
+
+# ignore all migrations
+**/migrations/*.py
