@@ -51,7 +51,7 @@
                 <table class="table">
                     {% for critic in critic_list %}
                         <tr>
-                            <td>Posted by {{ critic.author.last_name }} at {{ critic.created_at }}</td>
+                            <td>Posted by {{ critic.author.first_name }} {{ critic.author.last_name }} at {{ critic.created_at }}</td>
                         </tr>
                         <tr>
                             <td>{{ critic.criticText }}</td>

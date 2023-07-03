@@ -10,7 +10,7 @@ urlpatterns=[
     path('', views.MovieListView.as_view(), name='movielist'),
 #    path('movie/<int:pk>', views.MovieDetailView.as_view(template_name = 'movie_detail.html'), name='moviedetail'),
     path("movie/<int:movie_id>/", views.movie_detail, name="moviedetail"),
-
+    path("movie/import/", views.movie_import, name="movieimport"),
 ]
 
 if settings.DEBUG:
