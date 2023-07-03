@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Movie import{% endblock %}
+
+<body>
+    {% block content %}
+
+        <h1>Import movie from IMdb</h1>
+
+        {% if request.user.is_superuser %}
+            <h3>Add Movie</h3>
+            {% csrf_token %}
+            {% crispy movie_form %}
+        {% endif %}
+
+    {% endblock %}
+</body>
